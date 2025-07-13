@@ -1,5 +1,7 @@
 'use strict';
 
+const WINNING_SCORE = 50;
+
 // Getting the Elements
 const score0El = document.getElementById('score--0');
 const score1El = document.getElementById('score--1');
@@ -58,7 +60,7 @@ function hold() {
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-    if (scores[activePlayer] > 50) {
+    if (scores[activePlayer] > WINNING_SCORE) {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
@@ -79,18 +81,5 @@ function switchPlayer() {
 }
 
 function newGame() {
-  scores = [0, 0];
-  currentScore = 0;
-  activePlayer = 0;
-  playing = true;
-
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-
-  diceEl.classList.add('hidden');
-  player0SectionEl.classList.remove('player--winner');
-  player1SectionEl.classList.remove('player--winner');
-
-  player0SectionEl.classList.add('player--active');
-  player1SectionEl.classList.remove('player--active');
+  init();
 }
