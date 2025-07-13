@@ -64,7 +64,11 @@ function hold() {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
       playing = false;
+      diceEl.classList.add('hidden');
     }
 
     switchPlayer();
